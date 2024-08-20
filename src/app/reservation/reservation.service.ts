@@ -4,8 +4,11 @@ import { Reservation } from '../models/reservation';
   providedIn: 'root'
 })
 export class ReservationService {
-
-  constructor() { }
+// Before ngOnInit lifecycle hook
+  constructor() {
+    let savedReservations = localStorage.getItem("reservations");
+    this.reservations = savedReservations ? JSON.parse(savedReservations): [];
+   }
 
   private reservations: Reservation[] = [];
 
