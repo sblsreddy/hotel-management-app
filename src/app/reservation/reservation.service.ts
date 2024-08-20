@@ -9,11 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class ReservationService {
 
-  private aprUrl = "http://localhost:3001";
+  private apiUrl = "http://localhost:3001";
 
   private reservations: Reservation[] = [];
 
-// Before ngOnInit lifecycle hook
+// constructor will be called Before ngOnInit lifecycle hook
   constructor(private http: HttpClient) {
    
    }
@@ -23,7 +23,8 @@ export class ReservationService {
 
   // Retrive all
   getReservations() : Observable<Reservation[]>{
-   // return this.http.get<Reservation[]> (this.aprUrl+"/reservations);
+    //calling the mockoon api , asynchronous call to an external api
+    return this.http.get<Reservation[]> (this.apiUrl+"/reservations");
   }
 
   // Retrive one record by id
