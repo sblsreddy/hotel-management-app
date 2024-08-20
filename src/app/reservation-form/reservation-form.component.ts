@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReservationService } from '../reservation/reservation.service';
 import { Reservation } from '../models/reservation';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-reservation-form',
   templateUrl: './reservation-form.component.html',
@@ -13,7 +13,8 @@ export class ReservationFormComponent implements OnInit {
   // Dependency injection , when instance is created the contrcutor will be invoked
   constructor(private formBuilder: FormBuilder,
               private reservationService: ReservationService,
-              private router : Router
+              private router : Router,
+              private activatedRoute : ActivatedRoute
   ) {
   }
 
@@ -28,6 +29,14 @@ export class ReservationFormComponent implements OnInit {
       roomNumber: ['', Validators.required]
       
     })
+
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    if(id){
+      let reservation = this.reservationService.getReservation(id);
+
+      if(reservation)
+      this.reservationForm.patchValue(reservation);
+    }
   }
 
   reservationForm: FormGroup = new FormGroup({});
@@ -37,12 +46,21 @@ export class ReservationFormComponent implements OnInit {
     if(this.reservationForm.valid){
 
       let reservation: Reservation = this.reservationForm.value; // all the form values come here
-      this.reservationService.addReservation(reservation);
-      
+
+      let id = this.activatedRoute.snapshot.paramMap.get('id');
+
+      if(id){
+        // Update             
+        this.reservationService.updateReservation(id, reservation);
+      }else{
+        //New 
+        this.reservationService.addReservation(reservation);
+      }
+    } 
       
       // Redirecting to another page 
       this.router.navigate(['/list']);
 
     }
   }
-}
+
