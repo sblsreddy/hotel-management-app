@@ -99,5 +99,6 @@ C:\Users\Latitude\eclipse-workspace\angular-frontend\TheModernAngularBootcamp\ho
 CREATE src/app/reservation/reservation.service.spec.ts (382 bytes)
 CREATE src/app/reservation/reservation.service.ts (140 bytes)
 
-C:\Users\Latitude\eclipse-workspace\angular-frontend\TheModernAngularBootcamp\hotel-management-app>
+C:\Users\Latitude\eclipse-workspace\angular-frontend\TheModernAngularBootcamp\hotel-management-app>ng g interface models/reservation 
+CREATE src/app/models/reservation.ts (33 bytes)
 
