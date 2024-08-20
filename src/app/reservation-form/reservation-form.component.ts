@@ -14,6 +14,8 @@ export class ReservationFormComponent implements OnInit {
 
   reservationForm: FormGroup = new FormGroup({});
 
-
+onSubmit(){
+  
+}
 
 }
