@@ -88,3 +88,10 @@ CREATE src/app/reservation-form/reservation-form.component.ts (314 bytes)
 CREATE src/app/reservation-form/reservation-form.component.css (0 bytes)
 UPDATE src/app/reservation/reservation.module.ts (320 bytes)
 
+C:\Users\Latitude\eclipse-workspace\angular-frontend\TheModernAngularBootcamp\hotel-management-app>ng g c reservation-list --module=reservation 
+CREATE src/app/reservation-list/reservation-list.component.html (31 bytes)
+CREATE src/app/reservation-list/reservation-list.component.spec.ts (690 bytes)
+CREATE src/app/reservation-list/reservation-list.component.ts (314 bytes)
+CREATE src/app/reservation-list/reservation-list.component.css (0 bytes)
+UPDATE src/app/reservation/reservation.module.ts (441 bytes)
+
