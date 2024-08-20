@@ -24,18 +24,21 @@ export class ReservationService {
   // Create or Add a record based on reservation
   addReservation(reservation: Reservation): void{
     this.reservations.push(reservation);
+    localStorage.setItem("reservations", JSON.stringify(this.reservations));
   }
 
  // Delete a record based on id
   deleteReservation(id: String): void {
     let index = this.reservations.findIndex( res => res.id === id);
     this.reservations.splice(index,1);
+    localStorage.setItem("reservations", JSON.stringify(this.reservations));
   }
 
   //Update a record based on reservation
   updateReservation(updatedReservation: Reservation): void {
     let index = this.reservations.findIndex( res => res.id === updatedReservation.id);
     this.reservations[index] = updatedReservation;
+    localStorage.setItem("reservations", JSON.stringify(this.reservations));
   }
 
 }
