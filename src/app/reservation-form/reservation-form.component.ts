@@ -15,6 +15,7 @@ export class ReservationFormComponent implements OnInit {
 // Life cycle hook when component is initialized
   ngOnInit(): void {
     this.reservationForm = this.formBuilder.group({
+      // it should be same as form control name for e.g. checkInDate should be same in html
       checkInDate: ['', Validators.required],
       checkOutDate: ['', Validators.required],
       guestName: ['', Validators.required],
