@@ -10,15 +10,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ReservationFormComponent implements OnInit {
 
-  // Dependency injection , when instance is created the contrcutor will be invoked
-  constructor(private formBuilder: FormBuilder,
-              private reservationService: ReservationService,
-              private router : Router,
-              private activatedRoute : ActivatedRoute
-  ) {
-  }
+    reservationForm: FormGroup = new FormGroup({});
 
-// Life cycle hook when component is initialized
+  // Dependency injection , when instance is created the contrcutor will be invoked
+  constructor(
+    private formBuilder: FormBuilder,
+    private reservationService: ReservationService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
+
+  // Life cycle hook when component is initialized
   ngOnInit(): void {
     this.reservationForm = this.formBuilder.group({
       // it should be same as form control name for e.g. checkInDate should be same in html
@@ -26,41 +28,35 @@ export class ReservationFormComponent implements OnInit {
       checkOutDate: ['', Validators.required],
       guestName: ['', Validators.required],
       guestEmail: ['', [Validators.required, Validators.email]],
-      roomNumber: ['', Validators.required]
-      
-    })
+      roomNumber: ['', Validators.required],
+    });
 
     let id = this.activatedRoute.snapshot.paramMap.get('id');
-    if(id){
+
+    if (id) {
       let reservation = this.reservationService.getReservation(id);
 
-      if(reservation)
-      this.reservationForm.patchValue(reservation);
+      if (reservation) this.reservationForm.patchValue(reservation);
     }
   }
 
-  reservationForm: FormGroup = new FormGroup({});
-
   onSubmit() {
-
-    if(this.reservationForm.valid){
-
+    if (this.reservationForm.valid) {
       let reservation: Reservation = this.reservationForm.value; // all the form values come here
 
       let id = this.activatedRoute.snapshot.paramMap.get('id');
 
-      if(id){
-        // Update             
+      if (id) {
+        // Update
         this.reservationService.updateReservation(id, reservation);
-      }else{
-        //New 
+      } else {
+        //New
         this.reservationService.addReservation(reservation);
       }
-    } 
-      
-      // Redirecting to another page 
-      this.router.navigate(['/list']);
-
     }
+
+    // Redirecting to another page
+    this.router.navigate(['/list']);
   }
+}
 
