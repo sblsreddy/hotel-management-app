@@ -70,3 +70,12 @@ Build at: 2024-08-20T18:38:37.365Z - Hash: d0b44c6f30455d50 - Time: 350ms
 C:\Users\Latitude\eclipse-workspace\angular-frontend\TheModernAngularBootcamp\hotel-management-app>ng generate module home
 CREATE src/app/home/home.module.ts (190 bytes)
 
+C:\Users\Latitude\eclipse-workspace\angular-frontend\TheModernAngularBootcamp\hotel-management-app>ng generate component home --module=homee
+CREATE src/app/home/home.component.html (19 bytes)
+CREATE src/app/home/home.component.spec.ts (612 bytes)
+CREATE src/app/home/home.component.ts (267 bytes)
+CREATE src/app/home/home.component.css (0 bytes)
+UPDATE src/app/home/home.module.ts (261 bytes)
+
+C:\Users\Latitude\eclipse-workspace\angular-frontend\TheModernAngularBootcamp\hotel-management-app>
+
